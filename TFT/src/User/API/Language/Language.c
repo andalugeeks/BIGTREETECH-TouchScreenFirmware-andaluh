@@ -8,6 +8,7 @@
 #include "language_am.h"
 #include "language_cz.h"
 #include "language_es.h"
+#include "language_es_AND.h"
 #include "language_fr.h"
 #include "language_pt.h"
 #include "language_it.h"
@@ -67,6 +68,12 @@ const char *const es_pack[LABEL_NUM] = {
   #undef  X_WORD
 };
 
+const char *const es_AND_pack[LABEL_NUM] = {
+  #define X_WORD(NAME) ES_AND_##NAME ,
+  #include "Language.inc"
+  #undef  X_WORD
+};
+
 const char *const fr_pack[LABEL_NUM] = {
   #define X_WORD(NAME) FR_##NAME ,
   #include "Language.inc"
@@ -121,6 +128,7 @@ u8 * textSelect(u8 sel)
     case GERMAN:      return (u8 *)de_pack[sel];
     case CZECH:       return (u8 *)cz_pack[sel];
     case SPAIN:       return (u8 *)es_pack[sel];
+    case ANDALUH:     return (u8 *)es_AND_pack[sel];
     case FRENCH:      return (u8 *)fr_pack[sel];
     case PORTUGUESE:  return (u8 *)pt_pack[sel];
     case ITALIAN:     return (u8 *)it_pack[sel];
